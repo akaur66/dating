@@ -1,4 +1,9 @@
 <?php
+/*
+ * Amardip Kaur
+ * 4/27/20
+ * this is the controller file
+ */
 
 //turn on error reporting
 ini_set('display_errors', 1);
