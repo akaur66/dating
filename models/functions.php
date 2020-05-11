@@ -58,3 +58,15 @@ function getStates(){
         "Wyoming");
     return $states;
 }
+
+function getInInterests(){
+    $interests = array('tv', 'movies', 'cooking', 'board games',
+        'puzzles', 'reading', 'playing cards', 'video games');
+    return $interests;
+}
+
+function getOutInterests(){
+    $interests = array('hiking', 'biking', 'swimming', 'collecting',
+        'walking', 'climbing');
+    return $interests;
+}

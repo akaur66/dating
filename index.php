@@ -42,11 +42,20 @@ $f3->route('GET /profile', function($f3){
 //interests route
 $f3->route('GET /interests', function($f3){
 
-//    $allStates = getStates();
-//    $f3->set('allStates', $allStates);
+    $allInInterests = getInInterests();
+    $f3->set('allInInterests', $allInInterests);
+    $allOutInterests = getOutInterests();
+    $f3->set('allOutInterests', $allOutInterests);
 
     $view = new Template();
     echo $view->render('views/interests.html');
+});
+
+//summary route
+$f3->route('GET /summary', function($f3){
+
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 //run fat free

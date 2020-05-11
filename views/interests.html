@@ -23,61 +23,35 @@
     <hr>
 
     <form action="#" method="POST">
-        <div class="row">
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label><strong>In-door Interests</strong></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="tv" name="inInterest[]" value="tv">
-                        <label class="form-check-label" for="tv">tv</label>
-                    </div>
-                    <div class="form-check" id="interests">
-                        <input class="form-check-input" type="checkbox" id="football" name="inInterest[]" value="football">
-                        <label class="form-check-label" for="football">football</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label><strong>In-door Interests</strong></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="tv" name="inInterest[]" value="tv">
-                        <label class="form-check-label" for="tv">tv</label>
-                    </div>
-                    <div class="form-check" id="interests">
-                        <input class="form-check-input" type="checkbox" id="football" name="inInterest[]" value="football">
-                        <label class="form-check-label" for="football">football</label>
+        <label><strong>In-door Interests</strong></label><br>
+        <div class="row ml-3">
+            <repeat group="{{ @allInInterests}}" value="{{ @inInterest}}">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ @inInterest}}" name="inInterest[]" value="{{ @inInterest}}">
+                            <label class="form-check-label" for="{{ @inInterest}}">{{ @inInterest}}</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label><strong>In-door Interests</strong></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="tv" name="inInterest[]" value="tv">
-                        <label class="form-check-label" for="tv">tv</label>
-                    </div>
-                    <div class="form-check" id="interests">
-                        <input class="form-check-input" type="checkbox" id="football" name="inInterest[]" value="football">
-                        <label class="form-check-label" for="football">football</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label><strong>In-door Interests</strong></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="tv" name="inInterest[]" value="tv">
-                        <label class="form-check-label" for="tv">tv</label>
-                    </div>
-                    <div class="form-check" id="interests">
-                        <input class="form-check-input" type="checkbox" id="football" name="inInterest[]" value="football">
-                        <label class="form-check-label" for="football">football</label>
-                    </div>
-                </div>
-            </div>
+            </repeat>
         </div>
+
+        <label><strong>Out-door Interests</strong></label><br>
+        <div class="row ml-3">
+            <repeat group="{{ @allOutInterests}}" value="{{ @outInterest}}">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ @outInterest}}" name="outInterest[]" value="{{ @outInterest}}">
+                            <label class="form-check-label" for="{{ @outInterest}}">{{ @outInterest}}</label>
+                        </div>
+                    </div>
+                </div>
+            </repeat>
+        </div>
+
         <div class="row mb-3">
             <div class=" text-right col-12">
                 <a class="btn btn-primary" href="interests">Next ></a>
