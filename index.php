@@ -12,6 +12,8 @@ error_reporting(E_ALL);
 //require autoload file
 require_once('vendor/autoload.php');
 
+require_once("models/functions.php");
+
 //instantiate the F3 Base class
 $f3 = Base::instance();
 
@@ -25,6 +27,26 @@ $f3->route('GET /', function(){
 $f3->route('GET /personal', function(){
     $view = new Template();
     echo $view->render('views/personal.html');
+});
+
+//profile route
+$f3->route('GET /profile', function($f3){
+
+    $allStates = getStates();
+    $f3->set('allStates', $allStates);
+
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
+//interests route
+$f3->route('GET /interests', function($f3){
+
+//    $allStates = getStates();
+//    $f3->set('allStates', $allStates);
+
+    $view = new Template();
+    echo $view->render('views/interests.html');
 });
 
 //run fat free

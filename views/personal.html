@@ -1,7 +1,7 @@
 <!--
  Amardip Kaur
- 4/27/20
- This is the main page of the dating website
+ 5/10/20
+ This page gathers personal information
 -->
 <!doctype html>
 <html lang="en">
@@ -14,10 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <a class="navbar-brand" href="#">Perfect Match</a>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
+    <a class="navbar-brand" href="{{ @BASE }}">Perfect Match</a>
 </nav>
 
 <div class="container mt-3 border rounded">
@@ -70,7 +67,7 @@
         </div>
         <div class="row mb-3">
             <div class=" text-right col-12">
-                <a class="btn btn-primary" role="button" href="profile">Next ></a>
+                <a class="btn btn-primary" href="profile">Next ></a>
             </div>
         </div>
     </form>
