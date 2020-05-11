@@ -1,0 +1,52 @@
+<!--
+ Amardip Kaur
+ 5/10/20
+ This page gathers interests
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <title>Summary</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <a class="navbar-brand" href="{{ @BASE }}">Perfect Match</a>
+</nav>
+
+<div class="container mt-3 border rounded">
+
+    <form action="#" method="POST">
+        <div class="row">
+
+            <div class="col-md-6 mt-3">
+                <ul class="list-group">
+                    <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
+                    <li class="list-group-item">Gender: </li>
+                    <li class="list-group-item">Age: {{ @SESSION.age }}</li>
+                    <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+                    <li class="list-group-item">Email: </li>
+                    <li class="list-group-item">State: </li>
+                    <li class="list-group-item">Seeking: </li>
+                    <li class="list-group-item">Interests: </li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+        </div>
+        <div class="row mb-3 mt-3">
+            <div class=" text-center col-12">
+                <a class="btn btn-primary" href="{{ @BASE }}">Contact Me!</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
