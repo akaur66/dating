@@ -1,0 +1,81 @@
+<!--
+ Amardip Kaur
+ 4/27/20
+ This is the main page of the dating website
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <title>Perfect Match</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <a class="navbar-brand" href="#">Perfect Match</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+</nav>
+
+<div class="container mt-3 border rounded">
+
+    <h1>Personal Information</h1>
+    <hr>
+
+    <form action="#" method="POST">
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <div class="form-group">
+                    <label for="firstName"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Sarah">
+                </div>
+                <div class="form-group">
+                    <label for="lastName"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Smith">
+                </div>
+                <div class="form-group">
+                    <label for="age"><strong>Age</strong></label>
+                    <input type="text" class="form-control" id="age" name="age" placeholder="30">
+                </div>
+                <div class="form-group">
+                    <label><strong>Gender</strong></label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="male" name="gender" value="name">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="female" name="gender" value="female" checked>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age"><strong>Phone Number</strong></label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="222-333-4444">
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="alert bg-light mt-4 p-3 text-center border border-secondary rounded" role="alert">
+                    <strong>Note:</strong> All information entered is protected by our
+                    <span class="text-primary">privacy policy</span>. Profile information can only be viewed by others with
+                    your permission.
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class=" text-right col-12">
+                <a class="btn btn-primary" role="button" href="profile">Next ></a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -15,13 +15,16 @@ require_once('vendor/autoload.php');
 //instantiate the F3 Base class
 $f3 = Base::instance();
 
-//define a default route
-//when user visits the default root(file) - ...328/dating
-//it runs the function
+//home route
 $f3->route('GET /', function(){
-    //display a page called home.html
     $view = new Template();
     echo $view->render('views/home.html');
+});
+
+//personal information route
+$f3->route('GET /personal', function(){
+    $view = new Template();
+    echo $view->render('views/personal.html');
 });
 
 //run fat free
