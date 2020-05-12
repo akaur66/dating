@@ -6,16 +6,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
-
     <title>Summary</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <a class="navbar-brand" href="{{ @BASE }}">Perfect Match</a>
-</nav>
+    <include href="includes/header.html"></include>
+
 
 <div class="container mt-3 border rounded">
 
@@ -25,18 +18,22 @@
             <div class="col-md-6 mt-3">
                 <ul class="list-group">
                     <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
-                    <li class="list-group-item">Gender: </li>
+                    <li class="list-group-item">Gender: {{ @SESSION.gender }}</li>
                     <li class="list-group-item">Age: {{ @SESSION.age }}</li>
                     <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
-                    <li class="list-group-item">Email: </li>
-                    <li class="list-group-item">State: </li>
-                    <li class="list-group-item">Seeking: </li>
-                    <li class="list-group-item">Interests: </li>
+                    <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+                    <li class="list-group-item">State: {{ @SESSION.state }}</li>
+                    <li class="list-group-item">Seeking: {{ @SESSION.seeking }}</li>
+                    <li class="list-group-item">Interests:  {{ implode(@SESSION.inInterests, ", ") }}<br>{{ implode(@SESSION.outInterests, ", ") }}</li>
                 </ul>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
+                <img class=" rounded mx-auto d-block" src="images/profile.png" alt="mainImage">
 
+                <ul class="list-group mt-3">
+                    <li class="list-group-item">Biography <br>{{ @SESSION.biography }}</li>
+                </ul>
             </div>
         </div>
         <div class="row mb-3 mt-3">

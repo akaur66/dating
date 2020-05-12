@@ -6,16 +6,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
-
     <title>Profile</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <a class="navbar-brand" href="{{ @BASE }}">Perfect Match</a>
-</nav>
+    <include href="includes/header.html"></include>
+
 
 <div class="container mt-3 border rounded">
 
@@ -36,18 +29,18 @@
                     <select class="form-control" id="state" name="state">
                         <option value="none">Please select</option>><br>
                         <repeat group="{{ @allStates}}" value="{{ @state}}">
-                            <option value="@state">{{ ucfirst(@state) }}</option>><br>
+                            <option value="{{ @state }}">{{ ucfirst(@state) }}</option>><br>
                         </repeat>
                     </select>
                 </div>
                 <div class="form-group">
                     <label><strong>Seeking</strong></label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="male" name="gender" value="name" checked>
+                        <input class="form-check-input" type="radio" id="male" name="seeking" value="male">
                         <label class="form-check-label" for="male">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="female" name="gender" value="female">
+                        <input class="form-check-input" type="radio" id="female" name="seeking" value="female">
                         <label class="form-check-label" for="female">Female</label>
                     </div>
                 </div>
@@ -63,7 +56,7 @@
         </div>
         <div class="row mb-3">
             <div class=" text-right col-12">
-                <a class="btn btn-primary" href="interests">Next ></a>
+                <input class="btn btn-primary" type="submit" value="Next >">
             </div>
         </div>
     </form>

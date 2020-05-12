@@ -27,7 +27,7 @@ $f3->route('GET /', function(){
 });
 
 //personal information route
-$f3->route('GET /personal', function($f3){
+$f3->route('GET|POST /personal', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
 
@@ -37,10 +37,10 @@ $f3->route('GET /personal', function($f3){
         $_SESSION['firstName'] = $_POST['firstName'];
         $_SESSION['lastName'] = $_POST['lastName'];
         $_SESSION['age'] = $_POST['age'];
+        $_SESSION['gender'] = $_POST['gender'];
         $_SESSION['phone'] = $_POST['phone'];
 
-        $f3->reroute('summary');
-
+        $f3->reroute('profile');
     }
 
     $view = new Template();
@@ -48,30 +48,53 @@ $f3->route('GET /personal', function($f3){
 });
 
 //profile route
-$f3->route('GET /profile', function($f3){
+$f3->route('GET|POST /profile', function($f3){
 
     $allStates = getStates();
     $f3->set('allStates', $allStates);
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
+
+        //validate
+
+        //else store data in the session array
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['seeking'];
+        $_SESSION['biography'] = $_POST['biography'];
+
+        $f3->reroute('interests');
+    }
 
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
 //interests route
-$f3->route('GET /interests', function($f3){
+$f3->route('GET|POST /interests', function($f3){
 
     $allInInterests = getInInterests();
     $f3->set('allInInterests', $allInInterests);
     $allOutInterests = getOutInterests();
     $f3->set('allOutInterests', $allOutInterests);
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
+
+        //validate
+
+        //else store data in the session array
+        $_SESSION['inInterests'] = $_POST['inInterest'];
+        $_SESSION['outInterests'] = $_POST['outInterest'];
+
+        $f3->reroute('summary');
+    }
+
     $view = new Template();
     echo $view->render('views/interests.html');
 });
 
 //summary route
-$f3->route('GET /summary', function($f3){
-
+$f3->route('GET|POST /summary', function($f3){
     $view = new Template();
     echo $view->render('views/summary.html');
     session_destroy();
