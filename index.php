@@ -29,7 +29,7 @@ $f3->route('GET /', function(){
 //personal information route
 $f3->route('GET|POST /personal', function($f3){
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
+    if($_SERVER['REQUEST_METHOD'] == 'POST') { //first time on page or submitted form//post or get
 
         //validate
 
