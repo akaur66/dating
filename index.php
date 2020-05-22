@@ -31,7 +31,20 @@ $f3->route('GET|POST /personal', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') { //first time on page or submitted form//post or get
 
-        //validate
+        // if input not valid, set error variable in f3 hive
+
+        if (!validName($_POST['firstName'])) {
+            $f3->set('errors["firstName"]', "Please enter first name");
+        }
+        if (!validName($_POST['lastName'])) {
+            $f3->set('errors["lastName"]', "Please enter last name");
+        }
+        if (!validAge($_POST['age'])) {
+            $f3->set('errors["age"]', "Please enter correct age");
+        }
+        if (!validAge($_POST['age'])) {
+            $f3->set('errors["age"]', "Please enter correct age");
+        }
 
         //else store data in the session array
         $_SESSION['firstName'] = $_POST['firstName'];
