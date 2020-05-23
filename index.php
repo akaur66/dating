@@ -100,7 +100,7 @@ $f3->route('GET|POST /profile', function($f3){
     }
 
     $f3->set('email', $_POST['email']);
-    $f3->set('state', $_POST['state']);
+    $f3->set('selectedState', $_POST['state']);
     $f3->set('seeking', $_POST['seeking']);
     $f3->set('biography', $_POST['biography']);
 
@@ -118,14 +118,28 @@ $f3->route('GET|POST /interests', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
 
-        //validate
+        // if input not valid, set error variable in f3 hive
 
-        //else store data in the session array
-        $_SESSION['inInterests'] = $_POST['inInterest'];
-        $_SESSION['outInterests'] = $_POST['outInterest'];
+        if (isset($_POST['inInterest']) && !validIndoors(($_POST['inInterest']))) {
+            $f3->set('errors["indoors"]', "Wrong in-door interest selection");
+        }
+        if (isset($_POST['outInterest']) && !validOutdoors(($_POST['outInterest']))) {
+        $f3->set('errors["outdoors"]', "Wrong out-door interest selection");
+        }
 
-        $f3->reroute('summary');
+        //Data is valid
+        if (empty($f3->get('errors'))) {
+
+            // store data in the session array
+            $_SESSION['inInterests'] = $_POST['inInterest'];
+            $_SESSION['outInterests'] = $_POST['outInterest'];
+
+            $f3->reroute('summary');
+        }
     }
+
+    $f3->set('selectedIn', $_POST['inInterest']);
+    $f3->set('selectedOut', $_POST['outInterest']);
 
     $view = new Template();
     echo $view->render('views/interests.html');

@@ -24,7 +24,14 @@
                     <li class="list-group-item">Email: {{ @SESSION.email }}</li>
                     <li class="list-group-item">State: {{ @SESSION.state }}</li>
                     <li class="list-group-item">Seeking: {{ @SESSION.seeking }}</li>
-                    <li class="list-group-item">Interests:  {{ implode(@SESSION.inInterests, ", ") }}<br>{{ implode(@SESSION.outInterests, ", ") }}</li>
+                    <li class="list-group-item">Interests:
+                        <check if="{{ !empty(@SESSION.inInterests) }}" >
+                            {{ implode(@SESSION.inInterests, ", ") }}<br>
+                        </check>
+                        <check if="{{ !empty(@SESSION.inInterests) }}" >
+                            {{ implode(@SESSION.outInterests, ", ") }}
+                        </check>
+                        </li>
                 </ul>
             </div>
 
@@ -32,7 +39,7 @@
                 <img class=" rounded mx-auto d-block" src="images/profile.png" alt="mainImage">
 
                 <ul class="list-group mt-3">
-                    <li class="list-group-item">Biography <br>{{ @SESSION.biography }}</li>
+                    <li class="list-group-item">Biography: <br>{{ @SESSION.biography }}</li>
                 </ul>
             </div>
         </div>

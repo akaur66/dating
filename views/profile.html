@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
+                    <input type="email" class="form-control" id="email" name="email" value="{{ @email}}">
                     <span class="err">
                         <check if="{{ isset(@errors['email']) }}">
                             {{ @errors['email'] }}
@@ -35,7 +35,11 @@
                     <select class="form-control" id="state" name="state">
                         <option value="none">Please select</option>><br>
                         <repeat group="{{ @allStates}}" value="{{ @state}}">
-                            <option value="{{ @state }}">{{ ucfirst(@state) }}</option>><br>
+                            <option value="{{ @state }}"
+                                <check if="{{ @state == @selectedState }}" >
+                                    selected="selected"
+                                </check>
+                            >{{ ucfirst(@state) }}</option>><br>
                         </repeat>
                     </select>
                 </div>
@@ -43,11 +47,17 @@
                 <div class="form-group">
                     <label><strong>Seeking</strong></label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="male" name="seeking" value="male">
+                        <input class="form-check-input" type="radio" id="male" name="seeking" value="male"
+                            <check if="{{ @seeking == 'male' }}" >
+                                checked="checked"
+                            </check>>
                         <label class="form-check-label" for="male">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="female" name="seeking" value="female">
+                        <input class="form-check-input" type="radio" id="female" name="seeking" value="female"
+                            <check if="{{ @seeking == 'female' }}" >
+                                checked="checked"
+                            </check>>
                         <label class="form-check-label" for="female">Female</label>
                     </div>
                 </div>
@@ -57,7 +67,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="biography"><strong>Biography</strong></label>
-                    <textarea class="form-control" id="biography" name="biography" rows="6"></textarea>
+                    <textarea class="form-control" id="biography" name="biography" value="{{ @biography}}" rows="6"></textarea>
                 </div>
             </div>
         </div>

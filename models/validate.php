@@ -29,30 +29,27 @@
     {
         $outOptions = getOutInterests();
 
-        if(isset($outdoor)) { //if selected
-            foreach ($outdoor as $selectedOpt) {
-                if (in_array($selectedOpt, $outOptions)) { //if valid option
-                    return true;
-                }
-                else{
-                    return flase;
-                }
+        foreach ($outdoor as $selectedOpt) {
+            if (in_array($selectedOpt, $outOptions)) { //if valid option
+                return true;
+            }
+            else{
+                return false;
             }
         }
+
     }
 
     function validIndoors($indoor)
     {
         $inOptions = getInInterests();
 
-        if(isset($indoor)) { //if selected
-            foreach ($indoor as $selectedOpt) {
-                if (in_array($selectedOpt, $inOptions)) { //if valid option
-                    return true;
-                }
-                else{
-                    return flase;
-                }
+        foreach ($indoor as $selectedOpt) {
+            if (in_array($selectedOpt, $inOptions)) { //if valid option
+                return true;
+            }
+            else{
+                return false;
             }
         }
     }
