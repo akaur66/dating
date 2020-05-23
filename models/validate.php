@@ -9,7 +9,7 @@
     function validAge($age)
     {
             //not empty         //numeric           //between 18 and 118
-        return !empty($age) && is_numeric($age) && ($age > 18 && $age < 118);
+        return !empty($age) && is_numeric($age) && ($age >= 18 && $age <= 118);
     }
 
     function validPhone($number)

@@ -16,6 +16,7 @@ session_start();
 require_once('vendor/autoload.php');
 
 require_once("models/functions.php");
+require_once("models/validate.php");
 
 //instantiate the F3 Base class
 $f3 = Base::instance();
@@ -42,19 +43,29 @@ $f3->route('GET|POST /personal', function($f3){
         if (!validAge($_POST['age'])) {
             $f3->set('errors["age"]', "Please enter correct age");
         }
-        if (!validAge($_POST['age'])) {
-            $f3->set('errors["age"]', "Please enter correct age");
+        if (!validPhone($_POST['phone'])) {
+            $f3->set('errors["phone"]', "Please enter correct number");
         }
 
-        //else store data in the session array
-        $_SESSION['firstName'] = $_POST['firstName'];
-        $_SESSION['lastName'] = $_POST['lastName'];
-        $_SESSION['age'] = $_POST['age'];
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
+        //Data is valid
+        if (empty($f3->get('errors'))) {
 
-        $f3->reroute('profile');
+            //store data in session
+            $_SESSION['firstName'] = $_POST['firstName'];
+            $_SESSION['lastName'] = $_POST['lastName'];
+            $_SESSION['age'] = $_POST['age'];
+            $_SESSION['gender'] = $_POST['gender'];
+            $_SESSION['phone'] = $_POST['phone'];
+
+            $f3->reroute('profile');
+        }
     }
+
+    $f3->set('firstName', $_POST['firstName']);
+    $f3->set('lastName', $_POST['lastName']);
+    $f3->set('age', $_POST['age']);
+    $f3->set('gender', $_POST['gender']);
+    $f3->set('phone', $_POST['phone']);
 
     $view = new Template();
     echo $view->render('views/personal.html');
@@ -68,16 +79,30 @@ $f3->route('GET|POST /profile', function($f3){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') { //post or get
 
-        //validate
+        // if input not valid, set error variable in f3 hive
 
-        //else store data in the session array
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['state'] = $_POST['state'];
-        $_SESSION['seeking'] = $_POST['seeking'];
-        $_SESSION['biography'] = $_POST['biography'];
+        if (!validEmail($_POST['email'])) {
+            $f3->set('errors["email"]', "Please enter correct email");
+        }
 
-        $f3->reroute('interests');
+        //Data is valid
+        if (empty($f3->get('errors'))) {
+
+            // store data in the session array
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['state'] = $_POST['state'];
+            $_SESSION['seeking'] = $_POST['seeking'];
+            $_SESSION['biography'] = $_POST['biography'];
+
+            $f3->reroute('interests');
+        }
+
     }
+
+    $f3->set('email', $_POST['email']);
+    $f3->set('state', $_POST['state']);
+    $f3->set('seeking', $_POST['seeking']);
+    $f3->set('biography', $_POST['biography']);
 
     $view = new Template();
     echo $view->render('views/profile.html');

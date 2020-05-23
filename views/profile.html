@@ -23,7 +23,13 @@
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
+                    <span class="err">
+                        <check if="{{ isset(@errors['email']) }}">
+                            {{ @errors['email'] }}
+                        </check>
+                    </span>
                 </div>
+
                 <div class="form-group">
                     <label><strong>State</strong></label><br>
                     <select class="form-control" id="state" name="state">
@@ -33,6 +39,7 @@
                         </repeat>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label><strong>Seeking</strong></label><br>
                     <div class="form-check form-check-inline">
