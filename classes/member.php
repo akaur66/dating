@@ -19,23 +19,14 @@ class Member
      * @param $age age
      * @param $gender gender
      * @param $phone phone number
-     * @param $email email address
-     * @param $state state of residence
-     * @param $seeking seeking gender
-     * @param $bio biography
      */
-    public function __construct($fname, $lname, $age, $gender, $phone, $email,
-                                $state, $seeking, $bio )
+    public function __construct($fname, $lname, $age, $gender, $phone)
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_age = $age;
         $this->_gender = $gender;
         $this->_phone = $phone;
-        $this->_email = $email;
-        $this->_state = $state;
-        $this->_seeking = $seeking;
-        $this->_bio = $bio;
     }
 
     /**
@@ -183,7 +174,7 @@ class Member
     }
 
     /** toString() returns a String representation
-     *  of a member object
+     *  of a member name
      *  @return string
      */
     public function toString()
