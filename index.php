@@ -9,11 +9,11 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//start session
-session_start();
-
 //require autoload file
 require_once('vendor/autoload.php');
+
+//start session
+session_start();
 
 require_once("models/functions.php");
 require_once("models/validate.php");
@@ -50,12 +50,19 @@ $f3->route('GET|POST /personal', function($f3){
         //Data is valid
         if (empty($f3->get('errors'))) {
 
-            //store data in session
-            $_SESSION['firstName'] = $_POST['firstName'];
-            $_SESSION['lastName'] = $_POST['lastName'];
-            $_SESSION['age'] = $_POST['age'];
-            $_SESSION['gender'] = $_POST['gender'];
-            $_SESSION['phone'] = $_POST['phone'];
+            //Create member object
+
+            if (isset($_POST['member'])) { //check if premium
+                $member = new PremiumMember($_POST['firstName'], $_POST['lastName'],
+                    $_POST['age'], $_POST['gender'],  $_POST['phone'] );
+            }
+            else { //member class
+                $member = new Member($_POST['firstName'], $_POST['lastName'],
+                    $_POST['age'], $_POST['gender'], $_POST['phone']);
+            }
+
+            //Store the object in the session array
+            $_SESSION['member'] = $member;
 
             $f3->reroute('profile');
         }
@@ -66,6 +73,7 @@ $f3->route('GET|POST /personal', function($f3){
     $f3->set('age', $_POST['age']);
     $f3->set('gender', $_POST['gender']);
     $f3->set('phone', $_POST['phone']);
+    $f3->set('member', $_POST['member']);
 
     $view = new Template();
     echo $view->render('views/personal.html');
@@ -89,14 +97,18 @@ $f3->route('GET|POST /profile', function($f3){
         if (empty($f3->get('errors'))) {
 
             // store data in the session array
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['state'] = $_POST['state'];
-            $_SESSION['seeking'] = $_POST['seeking'];
-            $_SESSION['biography'] = $_POST['biography'];
+            $_SESSION['member']->setEmail($_POST['email']);
+            $_SESSION['member']->setState($_POST['state']);
+            $_SESSION['member']->setSeeking($_POST['seeking']);
+            $_SESSION['member']->setBio($_POST['biography']);
 
-            $f3->reroute('interests');
+            if (is_a($_SESSION['member'], 'PremiumMember')) { //show only if premium member
+                $f3->reroute('interests');
+            }
+            else {
+                $f3->reroute('summary');
+            }
         }
-
     }
 
     $f3->set('email', $_POST['email']);
@@ -131,8 +143,8 @@ $f3->route('GET|POST /interests', function($f3){
         if (empty($f3->get('errors'))) {
 
             // store data in the session array
-            $_SESSION['inInterests'] = $_POST['inInterest'];
-            $_SESSION['outInterests'] = $_POST['outInterest'];
+            $_SESSION['member']->setInDoorInterests($_POST['inInterest']);
+            $_SESSION['member']->setOutDoorInterests($_POST['outInterest']);
 
             $f3->reroute('summary');
         }

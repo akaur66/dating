@@ -1,7 +1,7 @@
 <!--
  Amardip Kaur
  5/10/20
- This page gathers interests
+ This page displays summary
 -->
 <!doctype html>
 <html lang="en">
@@ -17,13 +17,13 @@
 
             <div class="col-md-6 mt-3">
                 <ul class="list-group">
-                    <li class="list-group-item">Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</li>
-                    <li class="list-group-item">Gender: {{ @SESSION.gender }}</li>
-                    <li class="list-group-item">Age: {{ @SESSION.age }}</li>
-                    <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
-                    <li class="list-group-item">Email: {{ @SESSION.email }}</li>
-                    <li class="list-group-item">State: {{ @SESSION.state }}</li>
-                    <li class="list-group-item">Seeking: {{ @SESSION.seeking }}</li>
+                    <li class="list-group-item">Name: {{ @SESSION.member->getFname() }} {{ @SESSION.member->getLname() }}</li>
+                    <li class="list-group-item">Gender: {{ @SESSION.member->getGender() }}</li>
+                    <li class="list-group-item">Age: {{ @SESSION.member->getAge() }}</li>
+                    <li class="list-group-item">Phone: {{ @SESSION.member->getPhone() }}</li>
+                    <li class="list-group-item">Email: {{ @SESSION.member->getEmail() }}</li>
+                    <li class="list-group-item">State: {{ @SESSION.member->getState() }}</li>
+                    <li class="list-group-item">Seeking: {{ @SESSION.member->getSeeking() }}</li>
                     <li class="list-group-item">Interests:
                         <check if="{{ !empty(@SESSION.inInterests) }}" >
                             {{ implode(@SESSION.inInterests, ", ") }}<br>
@@ -31,7 +31,7 @@
                         <check if="{{ !empty(@SESSION.inInterests) }}" >
                             {{ implode(@SESSION.outInterests, ", ") }}
                         </check>
-                        </li>
+                    </li>
                 </ul>
             </div>
 
