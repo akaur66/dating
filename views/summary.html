@@ -24,14 +24,14 @@
                     <li class="list-group-item">Email: {{ @SESSION.member->getEmail() }}</li>
                     <li class="list-group-item">State: {{ @SESSION.member->getState() }}</li>
                     <li class="list-group-item">Seeking: {{ @SESSION.member->getSeeking() }}</li>
-                    <li class="list-group-item">Interests:
-                        <check if="{{ !empty(@SESSION.inInterests) }}" >
-                            {{ implode(@SESSION.inInterests, ", ") }}<br>
-                        </check>
-                        <check if="{{ !empty(@SESSION.inInterests) }}" >
-                            {{ implode(@SESSION.outInterests, ", ") }}
-                        </check>
-                    </li>
+<!--                    <li class="list-group-item">Interests:-->
+<!--                        <check if="{{ !empty(@SESSION.inInterests) }}" >-->
+<!--                            {{ implode(@SESSION.inInterests, ", ") }}<br>-->
+<!--                        </check>-->
+<!--                        <check if="{{ !empty(@SESSION.inInterests) }}" >-->
+<!--                            {{ implode(@SESSION.outInterests, ", ") }}-->
+<!--                        </check>-->
+<!--                    </li>-->
                 </ul>
             </div>
 
@@ -39,7 +39,7 @@
                 <img class=" rounded mx-auto d-block" src="images/profile.png" alt="mainImage">
 
                 <ul class="list-group mt-3">
-                    <li class="list-group-item">Biography: <br>{{ @SESSION.biography }}</li>
+                    <li class="list-group-item">Biography: <br>{{ @SESSION.member->getBio() }}</li>
                 </ul>
             </div>
         </div>

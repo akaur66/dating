@@ -1,14 +1,23 @@
 <?php
+
+/**
+ * Class Validate
+ * Contains the validation methods for my app
+ * @author Amardip Kaur
+ * @version 1.0
+ */
+class Validate
+{
     function validName($name)
     {
         $name = str_replace(' ', '', $name); //remove white space
-            //not empty         //all alphabets
+        //not empty         //all alphabets
         return !empty($name) && ctype_alpha($name);
     }
 
     function validAge($age)
     {
-            //not empty         //numeric           //between 18 and 118
+        //not empty         //numeric           //between 18 and 118
         return !empty($age) && is_numeric($age) && ($age >= 18 && $age <= 118);
     }
 
@@ -32,8 +41,7 @@
         foreach ($outdoor as $selectedOpt) {
             if (in_array($selectedOpt, $outOptions)) { //if valid option
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         }
@@ -47,9 +55,9 @@
         foreach ($indoor as $selectedOpt) {
             if (in_array($selectedOpt, $inOptions)) { //if valid option
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         }
     }
+}
