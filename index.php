@@ -16,7 +16,6 @@ require_once('vendor/autoload.php');
 session_start();
 
 require_once("models/functions.php");
-require_once("models/validate.php");
 
 //instantiate classes
 $f3 = Base::instance();
