@@ -2,6 +2,9 @@
 
 /**
  * Class Controller
+ * Controls routings
+ * @author Amardip Kaur
+ * @version 1.0
  */
 class Controller
 {
@@ -28,6 +31,9 @@ class Controller
         echo $view->render('views/home.html');
     }
 
+    /**
+     * Process the personal route
+     */
     public function personal()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') { //first time on page or submitted form//post or get
@@ -80,7 +86,7 @@ class Controller
     }
 
     /**
-     * Process the personal information route
+     * Process the profile information route
      */
     public function profile()
     {
@@ -123,7 +129,7 @@ class Controller
     }
 
     /**
-     * Process the vehicle information form route
+     * Process the interests form route
      */
     public function interests()
     {
@@ -162,7 +168,7 @@ class Controller
     }
 
     /**
-     *
+     * Process the summary route
      */
     public function summary()
     {

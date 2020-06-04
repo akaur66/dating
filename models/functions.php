@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * @returns array states
+ */
 function getStates(){
     $states = array(
         "Alaska",
@@ -59,12 +63,18 @@ function getStates(){
     return $states;
 }
 
+/**
+ * @returns array in door interests
+ */
 function getInInterests(){
     $interests = array('tv', 'movies', 'cooking', 'board games',
         'puzzles', 'reading', 'playing cards', 'video games');
     return $interests;
 }
 
+/**
+ * @returns array out door interests
+ */
 function getOutInterests(){
     $interests = array('hiking', 'biking', 'swimming', 'collecting',
         'walking', 'climbing');

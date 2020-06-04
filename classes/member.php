@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Member
+ * Regular member information
+ * @author Amardip Kaur
+ * @version 1.0
+ */
 class Member
 {
     //Declare instance variables

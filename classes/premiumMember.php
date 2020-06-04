@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class PremiumMember
+ * Premium member information
+ * @author Amardip Kaur
+ * @version 1.0
+ */
 class PremiumMember extends Member
 {
     //Declare instance variables
